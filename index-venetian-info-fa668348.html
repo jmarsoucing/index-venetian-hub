@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>资料整理 · 澳门威尼斯人 · 信息卡片</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #f9fafc;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: #1e2a3a;
+            line-height: 1.6;
+            padding: 2rem 1.2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .page {
+            max-width: 720px;
+            width: 100%;
+        }
+        /* hero / 主视觉卡片 */
+        .hero-card {
+            background: #ffffff;
+            border-radius: 28px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02), 0 2px 8px rgba(0, 0, 0, 0.03);
+            padding: 2.4rem 2rem;
+            margin-bottom: 2rem;
+            transition: box-shadow 0.2s;
+        }
+        .hero-card h1 {
+            font-size: 2rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            color: #0f1a2b;
+            border-left: 5px solid #b68c5c;
+            padding-left: 1rem;
+            margin-bottom: 1.2rem;
+        }
+        .hero-card p {
+            color: #2c3e4f;
+            font-size: 1.05rem;
+            max-width: 640px;
+        }
+        .hero-card .sub {
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            color: #5a6c7a;
+            border-top: 1px solid #e8ecf0;
+            padding-top: 1rem;
+        }
+        /* 卡片网格 */
+        .card-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .card {
+            background: #fff;
+            border-radius: 24px;
+            padding: 1.8rem 1.6rem;
+            flex: 1 1 280px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.02);
+            border: 1px solid #eef1f5;
+        }
+        .card h2 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 0.9rem;
+            color: #1b293b;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .card h2::before {
+            content: "▹";
+            color: #b68c5c;
+            font-weight: 300;
+        }
+        .card p, .card li {
+            font-size: 0.95rem;
+            color: #2e3f4e;
+        }
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .card li {
+            padding: 0.3rem 0;
+            border-bottom: 1px solid #f0f3f6;
+        }
+        .card li:last-child {
+            border-bottom: none;
+        }
+        .card li::before {
+            content: "· ";
+            color: #b68c5c;
+            font-weight: 500;
+        }
+        /* 自然链接段落卡片 */
+        .link-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 1.8rem 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid #eef1f5;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.01);
+        }
+        .link-card h2 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: #1b293b;
+            margin-bottom: 0.8rem;
+            border-bottom: 2px solid #eef1f5;
+            padding-bottom: 0.5rem;
+        }
+        .link-card p {
+            font-size: 1rem;
+            color: #2b3d4c;
+            margin-bottom: 0.8rem;
+        }
+        .link-card a {
+            color: #1f5a7a;
+            text-decoration: none;
+            font-weight: 400;
+            border-bottom: 1px dotted #b6c8d4;
+            transition: border-color 0.15s;
+        }
+        .link-card a:hover {
+            border-bottom: 1px solid #1f5a7a;
+        }
+        /* 提示 / faq 摘要 */
+        .tips {
+            background: #f4f7fb;
+            border-radius: 24px;
+            padding: 1.6rem 2rem;
+            margin-bottom: 2rem;
+            border-left: 4px solid #b68c5c;
+        }
+        .tips h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 0.6rem;
+            color: #1b293b;
+        }
+        .tips p {
+            font-size: 0.95rem;
+            color: #30414f;
+        }
+        .faq-summary {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 1.5rem 2rem;
+            border: 1px solid #eef1f5;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+            margin-bottom: 1.5rem;
+        }
+        .faq-summary dt {
+            font-weight: 500;
+            color: #0f1a2b;
+            margin: 0.8rem 0 0.3rem 0;
+            font-size: 1rem;
+        }
+        .faq-summary dd {
+            font-size: 0.9rem;
+            color: #3c4f5e;
+            margin-left: 0.5rem;
+            border-left: 2px solid #dfe6ed;
+            padding-left: 0.8rem;
+        }
+        .faq-summary dt:first-of-type {
+            margin-top: 0;
+        }
+        hr {
+            border: none;
+            border-top: 1px solid #e3e8ef;
+            margin: 1.5rem 0;
+        }
+        .footnote {
+            font-size: 0.8rem;
+            color: #6b7d8b;
+            text-align: center;
+            margin-top: 2.5rem;
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 1.2rem 0.8rem;
+            }
+            .hero-card {
+                padding: 1.8rem 1.2rem;
+            }
+            .hero-card h1 {
+                font-size: 1.6rem;
+            }
+            .card-grid {
+                gap: 1rem;
+            }
+            .card {
+                padding: 1.5rem 1.2rem;
+                flex: 1 1 100%;
+            }
+            .link-card, .tips, .faq-summary {
+                padding: 1.2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- 主视觉卡片 -->
+    <div class="hero-card">
+        <h1>资料整理 · 澳门威尼斯人</h1>
+        <p>从信息索引与内容归类的角度，将关于<strong>澳门威尼斯人</strong>的常见线索、场景用途与适宜人群整理为简明卡片。避免碎片化，只提取值得参考的侧面。</p>
+        <div class="sub">基于公开资料汇编 · 仅供信息参考</div>
+    </div>
+
+    <!-- 信息卡片：用途 + 适合人群 -->
+    <div class="card-grid">
+        <div class="card">
+            <h2>用途概览</h2>
+            <ul>
+                <li>综合度假区 · 住宿、餐饮、购物</li>
+                <li>室内运河与贡多拉体验</li>
+                <li>会议、展览及宴会场地</li>
+                <li>剧场演出与娱乐活动</li>
+                <li>休闲漫步 · 建筑与景观拍照</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h2>适合人群</h2>
+            <ul>
+                <li>家庭出游 · 各年龄层皆宜</li>
+                <li>情侣 · 纪念日或短途放松</li>
+                <li>商务差旅 · 会议与住宿一站式</li>
+                <li>文化观光客 · 意大利风情复制建筑</li>
+                <li>摄影爱好者 · 室内光影与运河场景</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h2>特色索引</h2>
+            <ul>
+                <li>大运河购物中心 · 品牌与餐饮</li>
+                <li>圣马可广场 · 日常表演与氛围</li>
+                <li>贡多拉游船 · 室内运河体验</li>
+                <li>主题套房 · 不同风格住宿</li>
+                <li>酒店内艺术装置 · 壁画与穹顶</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 自然链接段落卡片 -->
+    <div class="link-card">
+        <h2>索引与延伸</h2>
+        <p>如果你正在查找关于<strong>澳门威尼斯人</strong>的具体设施、活动排期或观光提示，从信息整理的角度看，聚合类站点与官方介绍页各有侧重。以下为直接相关的资料地址：<a href="https://index-venetian.com">澳门威尼斯人</a>（一个以内容索引为主的页面，整合了常见基础信息与分类指引）。可以将其作为资料查找的起点之一，再根据自身兴趣进行细项筛选。</p>
+        <p>另外，旅行论坛与酒店预订平台通常也保留了用户评价与实拍图，配合索引页使用更全面。本页仅做基础框架梳理。</p>
+    </div>
+
+    <!-- FAQ 摘要卡片 -->
+    <div class="faq-summary">
+        <h3 style="font-weight:500; margin-bottom:0.8rem; color:#1b293b;">常见问题摘要</h3>
+        <dl>
+            <dt>澳门威尼斯人需要门票吗？</dt>
+            <dd>度假区本身免费进入，部分景点（如贡多拉游船）单独收费，建议提前查询当日运营安排。</dd>
+            <dt>交通方式？</dt>
+            <dd>位于路氹城，可搭乘酒店免费穿梭巴士、轻轨或出租车，与机场、码头之间有接驳。</dd>
+            <dt>适合非住客游览吗？</dt>
+            <dd>适合，公共区域完全开放，购物、餐饮、运河区均可自由步行参观。</dd>
+            <dt>最佳游览时段？</dt>
+            <dd>平日白天人相对较少，傍晚灯光开启后氛围更浓厚，室内不受天气影响。</dd>
+        </dl>
+    </div>
+
+    <!-- 提示卡片 -->
+    <div class="tips">
+        <h3>信息整理提示</h3>
+        <p>上述内容基于常见公开资讯汇编，不包含促销、折扣或动态价格。实际营业时间、活动安排及设施可用性请以现场或官方渠道为准。建议出行前再次确认。</p>
+    </div>
+
+    <hr>
+    <div class="footnote">
+        资料卡片 · 更新于近期 &nbsp;|&nbsp; 仅供参考，不作商业引导
+    </div>
+</div>
+</body>
+</html>

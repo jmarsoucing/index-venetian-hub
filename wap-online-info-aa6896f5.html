@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>乐鱼 · 一点说明</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(145deg, #fdeece 0%, #fad6a5 40%, #f7c689 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+            line-height: 1.7;
+            color: #2e241b;
+        }
+
+        .card {
+            max-width: 820px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(2px);
+            border-radius: 44px;
+            padding: 2.6rem 2.4rem;
+            box-shadow: 0 12px 28px rgba(140, 80, 30, 0.15), 0 4px 12px rgba(0, 0, 0, 0.04);
+            transition: all 0.25s ease;
+            border: 1px solid rgba(255, 235, 200, 0.6);
+        }
+
+        @media (max-width: 600px) {
+            .card {
+                padding: 1.8rem 1.4rem;
+                border-radius: 32px;
+            }
+        }
+
+        .greeting {
+            font-size: 1.1rem;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+            color: #a0714b;
+            margin-bottom: 0.35rem;
+        }
+
+        h1 {
+            font-size: 2.6rem;
+            font-weight: 600;
+            color: #3a281b;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin-bottom: 1.4rem;
+            border-left: 5px solid #e5a96a;
+            padding-left: 1rem;
+        }
+
+        @media (max-width: 500px) {
+            h1 {
+                font-size: 2.1rem;
+                padding-left: 0.8rem;
+            }
+        }
+
+        .lead {
+            font-size: 1.12rem;
+            background: #fff6eb;
+            padding: 1.2rem 1.6rem;
+            border-radius: 30px;
+            margin-bottom: 2rem;
+            color: #412f21;
+            box-shadow: inset 0 1px 4px rgba(0,0,0,0.02);
+            border: 1px solid #f5dfcb;
+        }
+
+        .lead a {
+            color: #934d1e;
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 2px solid #f1c59b;
+            transition: border-color 0.2s;
+        }
+
+        .lead a:hover {
+            border-bottom-color: #aa632d;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 550;
+            margin: 2rem 0 1rem 0;
+            color: #4d3421;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-title:before {
+            content: "▍";
+            font-size: 1.3rem;
+            color: #c4874e;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1.6rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .feature-list li {
+            background: #fcf5ed;
+            padding: 0.9rem 1.2rem;
+            border-radius: 28px;
+            border-left: 5px solid #dbaa76;
+            font-size: 1rem;
+            color: #35291f;
+            box-shadow: 0 2px 4px rgba(150, 90, 40, 0.06);
+            transition: transform 0.15s, background 0.2s;
+        }
+
+        .feature-list li:hover {
+            background: #faeede;
+            transform: translateX(4px);
+        }
+
+        .feature-list li strong {
+            color: #764a28;
+            font-weight: 600;
+        }
+
+        .story-note {
+            background: #f5e5d4;
+            border-radius: 40px;
+            padding: 1.4rem 1.8rem;
+            margin: 2rem 0 1.2rem 0;
+            border: 1px solid #eacfb6;
+        }
+
+        .story-note p {
+            font-size: 1rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .story-note p:last-child {
+            margin-bottom: 0;
+        }
+
+        .faq-mini {
+            margin: 2rem 0 1.2rem 0;
+        }
+
+        .faq-item {
+            padding: 0.7rem 0;
+            border-bottom: 1px dashed #e1cbb7;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-q {
+            font-weight: 600;
+            color: #5e3e28;
+            margin-bottom: 0.2rem;
+            font-size: 1.02rem;
+        }
+
+        .faq-a {
+            color: #4f3b2d;
+            padding-left: 0.8rem;
+            font-size: 0.96rem;
+        }
+
+        .closing {
+            margin-top: 2.4rem;
+            padding-top: 1.2rem;
+            border-top: 2px solid #eedbc9;
+            font-size: 1rem;
+            color: #4b3626;
+            text-align: right;
+            font-style: normal;
+            line-height: 1.6;
+        }
+
+        .closing a {
+            color: #794f2d;
+            text-decoration: none;
+            border-bottom: 1px solid #dbb690;
+            transition: border 0.2s;
+        }
+
+        .closing a:hover {
+            border-bottom-color: #a66131;
+        }
+
+        .btn-soft {
+            display: inline-block;
+            background: #ebd8c2;
+            padding: 0.5rem 1.4rem;
+            border-radius: 60px;
+            color: #3b281c;
+            font-weight: 500;
+            text-decoration: none;
+            border: 1px solid #dbbd9f;
+            transition: all 0.2s;
+            margin-top: 0.2rem;
+        }
+
+        .btn-soft:hover {
+            background: #ddc3a8;
+            border-color: #b78e68;
+            transform: scale(1.01);
+        }
+
+        .footnote {
+            margin-top: 1.8rem;
+            font-size: 0.85rem;
+            color: #7b624c;
+            opacity: 0.7;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <div class="greeting">—— 一篇安静的说明 ——</div>
+
+    <h1>关于「乐鱼」</h1>
+
+    <div class="lead">
+        无论是在手机还是平板上，总需要一个稳定、清晰的页面，作为日常使用的起点。<br>
+        这里整理了一些基本情况和特点，供你翻阅。页面指向的正是 <a href="https://wap-online-leyu.com">乐鱼</a>，一个长期维护的访问位置。
+    </div>
+
+    <div class="section-title">几个特点</div>
+    <ul class="feature-list">
+        <li><strong>入口直接</strong> —— 不需要多层跳转，打开就能看到核心内容，省去不必要的等待。</li>
+        <li><strong>适配移动端</strong> —— 无论屏幕大小，排版和按钮都按触控习惯调整，减少误触。</li>
+        <li><strong>轻量结构</strong> —— 页面本身干净，没有冗余脚本或弹窗，浏览过程更集中。</li>
+        <li><strong>信息一致</strong> —— 功能分区和文字说明长期保持稳定，不会突然变位置。</li>
+    </ul>
+
+    <div class="story-note">
+        <p>💡 日常使用场景：</p>
+        <p>有人习惯把它放在浏览器书签栏，也有人把快捷方式添加到桌面。如果你经常需要快速进入某个固定页面，不妨先收藏<strong>乐鱼</strong>对应的网址，之后每次点击就能直达，不必反复搜索。</p>
+    </div>
+
+    <div class="faq-mini">
+        <div class="faq-item">
+            <div class="faq-q">❓ 这个页面和乐鱼是什么关系？</div>
+            <div class="faq-a">这是一个辅助介绍页，帮助你了解其基本定位和访问方式。具体服务与内容请以 <a href="https://wap-online-leyu.com" style="color:#7a4b26;text-decoration:underline;">乐鱼</a> 自身页面为准。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">❓ 为什么强调“稳定入口”？</div>
+            <div class="faq-a">很多网址会频繁变动或需要额外下载，而这里提供的地址长期可用，适合作为固定访问点。</div>
+        </div>
+    </div>
+
+    <div class="closing">
+        <p>整理这些内容，是想让你在需要时，能多一份清晰的参考。</p>
+        <p>如果你觉得有用，可以把当前页面当作一个便签保存。需要访问时，直接前往 <a href="https://wap-online-leyu.com">乐鱼</a> 即可。</p>
+        <p style="margin-top:0.8rem;"><a href="https://wap-online-leyu.com" class="btn-soft">乐鱼</a></p>
+    </div>
+
+    <div class="footnote">
+        —— 页面内容仅供参考，不构成任何承诺或引导 ——
+    </div>
+</div>
+
+</body>
+</html>
